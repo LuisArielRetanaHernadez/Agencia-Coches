@@ -23,14 +23,23 @@ h1{
     align-items: center;
 }
 /*===========================*/
+.col-5 .context-hader{
+    width: 100%;
+    height: auto;
+}
+/*===========================*/
 .color-white{
     color: white;
 }
 .margin-auto{
     margin: auto;
 }
+.margin-bottom{
+    margin-bottom: 0px;
+}
 /*===========================*/
 .container{
+    display: flex;
     position: relative;
     width: 100%;
     height: auto;
@@ -45,6 +54,7 @@ h1{
 }
 .col-5{
     width: 41.66%;
+    height: auto;
 }
 .col-6{
     width: 50%;
