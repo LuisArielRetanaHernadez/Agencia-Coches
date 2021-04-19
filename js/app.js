@@ -36,51 +36,78 @@ let cars = [
         img: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sep-3-6pm-cet-new-nissan-juke-unveil-dynamic-outdoor-3-1567529212.jpg?crop=0.823xw:0.620xh;0,0.153xh&resize=768:*'
     }
 ];
-console.log(cars)
 
-function pinterCars (dataCars) {
-    let con = -1;
+//pintar los datos de los coches en el tabla DOM
+
+function pinterData(dataCars){
     let container = document.getElementById('container-data')
     container.innerHTML = ''
-    for(let i = 0; i < dataCars.length; i++) {
-        con --;
+    for (const data of dataCars) {
         container.innerHTML += `
-    <div class="content-car">
-    <div id="${dataCars[i].id}" class="context-cars style="width: 100%; height: 100%">
-        <div class="imgs margin-auto">
-            <img class="margin-auto" src='${dataCars[i].img}' alt="">
-            <button class="btn-edit" onclick='showForm()'>Editar</button>
-            <button class="btn-delet">Eliminar</button>
-        </div>
-
-        <p class="margin-left">Marca: ${dataCars[i].brand}</p>
-        <p class="margin-left">Modelo: ${dataCars[i].model}</p>
-        <p class="margin-left">Color: ${dataCars[i].colour}</p>
-        <p class="margin-left">año: ${dataCars[i].year}</p>
-        <p class="margin-left">precio: ${dataCars[i].price}</p>
-    </div>
-    <form id="${con}" class="display-none content-form" style="display: none;" id="content-form" action="" onsubmit="event.preventDefault(), user()">
-        <input type="text" name="" id="" placeholder="Marca">
-        <input type="text" name="" id="" placeholder="Modelo">
-        <input type="text" name="" id="" placeholder="Color">
-        <input type="number" name="" id="" placeholder="Año">
-        <input type="number" name="" id="" placeholder="Precio">
-        <input type="url" name="" id="" placeholder="Url Imagen">
-        <button onclick='hideForm()' class="btn-update">actulizar</button>
-    </form>
-    </div>`
+        <tr>
+        <td>${data.brand}</td>
+        <td>${data.model}</td>
+        <td>${data.colour}</td>
+        <td>${data.year}</td>
+        <td>${data.price}</td>
+        <td><a class="btn btn-secondary" href='${data.img}' target="_blank">Ver imagen</a></td>
+        <td><button class="btn btn-light" onclick="updateDataCar(${data.id})">Update</button></td>
+        <td><button class="btn btn-danger btn-Update" onclick="deletCar(${data.id})">Delete</button></td>
+        </tr>
+        `
     }
 }
 
+function deletCar(id){
+    const idCar = cars.findIndex((cars) => cars.id === id)
+    cars.splice(idCar, 1)
+    pinterData(cars)
+}
+
 function showForm(){
-    document.getElementById('1').style.display = 'none';
-    document.getElementById('-2').style.display = 'flex'
+    document.getElementById('form-create').classList.remove('d-nonde')
 }
-hideForm = () => {
-    document.getElementById('1').style.display = 'block';
-    document.getElementById('-2').style.display = 'none'
+
+function updateDataCar(id){
+    const idIdex = cars.findIndex((cars) => cars.id === id)
+    const carUpdate = cars[idIdex]
+    document.getElementById('in-brand').value = carUpdate.brand
+    document.getElementById('in-model').value = carUpdate.model
+    document.getElementById('in-colour').value = carUpdate.colour
+    document.getElementById('in-year').value = carUpdate.year
+    document.getElementById('in-price').value = carUpdate.price
+    document.getElementById('in-img').value = carUpdate.img
 }
-function createNewCoche(){
-    
-}    
-pinterCars(cars)
+
+function gaddCarNew(){
+    let newCar = [];
+    const brand = document.getElementById('in-brand').value
+    const model = document.getElementById('in-model').value
+    const colour = document.getElementById('in-colour').value
+    const year = document.getElementById('in-year').value
+    const price = document.getElementById('in-price').value
+    const img = document.getElementById('in-img').value
+    const idIdex = cars.length
+    newCar = {
+        id: idIdex,
+        brand: brand,
+        model: model,
+        colour: colour,
+        year: year,
+        price: price,
+        img: img
+    }
+    cars.push(newCar)
+    pinterData(cars)
+}
+
+function car(){
+    const buton = document.getElementsByClassName('btn-Update')
+    if(buton){
+        updateDataCar()
+    }else{
+        gaddCarNew()
+    }
+}
+
+pinterData(cars)
