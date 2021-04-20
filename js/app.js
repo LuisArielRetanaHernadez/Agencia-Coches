@@ -65,18 +65,49 @@ function deletCar(id){
 }
 
 function showForm(){
-    document.getElementById('form-create').classList.remove('d-nonde')
+    document.getElementById('form-create').classList.remove('d-none')
+}
+function hideFrom(){
+    document.getElementById('from-create').hidden
+}
+
+function validateUpdate(updateValidate){
+    if(updateValidate === ''){
+        document.getElementById('in-brand').value = carUpdate.brand
+        document.getElementById('in-model').value = carUpdate.model
+        document.getElementById('in-colour').value = carUpdate.colour
+        document.getElementById('in-year').value = carUpdate.year
+        document.getElementById('in-price').value = carUpdate.price
+        document.getElementById('in-img').value = carUpdate.img 
+    }
 }
 
 function updateDataCar(id){
     const idIdex = cars.findIndex((cars) => cars.id === id)
     const carUpdate = cars[idIdex]
-    document.getElementById('in-brand').value = carUpdate.brand
-    document.getElementById('in-model').value = carUpdate.model
-    document.getElementById('in-colour').value = carUpdate.colour
-    document.getElementById('in-year').value = carUpdate.year
-    document.getElementById('in-price').value = carUpdate.price
-    document.getElementById('in-img').value = carUpdate.img
+
+    carUpdate.brand = document.getElementById('in-brand').value
+    carUpdate.model  = document.getElementById('in-model').value
+    carUpdate.colour = document.getElementById('in-colour').value
+    carUpdate.year = document.getElementById('in-year').value
+    carUpdate.price = document.getElementById('in-price').value
+    carUpdate.img = document.getElementById('in-img').value
+    cars[idIdex] = {
+        brand: carUpdate.brand,
+        model: carUpdate.model,
+        colour: carUpdate.colour,
+        year: carUpdate.year,
+        price: carUpdate.price,
+        img: carUpdate.img
+    }
+    validateUpdate(cars[idIdex])
+    showForm()
+    btnUpdate()
+    pinterData(cars)
+}
+
+function btnUpdate(){
+    document.getElementById('btn-car-form').style.background = "maroon"
 }
 
 function gaddCarNew(){
