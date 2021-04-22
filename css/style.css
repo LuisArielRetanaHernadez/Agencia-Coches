@@ -52,8 +52,9 @@ header{
     bottom: 50%;
 }
 header .container-video{
+    margin: auto;
     width: 100%;
-    height: 10vw;
+    height: 50vw;
 }
 .container-video video{
     width: 100%;

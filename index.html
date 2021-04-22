@@ -10,13 +10,14 @@
 </head>
 <body>
 
-    <header>
+<!--     <header>
         <section class="container-video">
             <video src="./videos/y2mate.com - Flame Spitting Aventador S in 4K_1080p.mp4#t=90" autoplay muted></video>
+            <h1>Agencia SIPERCARS</h1>
         </section>
-    </header>
+    </header> -->
 
-    <button class="btn btn-dark btn-add" onclick="showForm()" style="text-align: center;">
+    <button class="btn btn-dark btn-add" onclick="openForm()" style="text-align: center;">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
           </svg>
@@ -51,7 +52,7 @@
     <section id="form-create" class="containerr container-from d-none" style="position: fixed;">
         <div class="row">
             <div class="col-6 content-from margin-auto" style="background-color: white; border: 1px solid black;">
-                <form action="" onsubmit="event.preventDefault(), car()">
+                <form action="" id="car-form" onsubmit="event.preventDefault(), car()">
                     <div class="container-input margin-auto">
                         <label class="text-aling-center" for="in-brand">Marca</label>
                         <input id="in-brand" type="text" placeholder="Marca" required>
@@ -73,15 +74,15 @@
                         <input id="in-year" type="number" name="" id="" placeholder="Año" required>
                     </div>
                     <div class="container-input margin-auto">
-                        <label class="text-aling-cent+er" for="in-img">Imagen</label>
+                        <label class="text-aling-center" for="in-img">Imagen</label>
                         <input id="in-img" type="url" name="" id="" placeholder="Url de Imagen" required>
                     </div>
-                    <button type="sublimt" onclick="hideFrom()" id="btn-car-form" class="btn-create margin-auto color-white margin-top-10px">Guardar</button>
+                    <button type="sublimt" id="btn-car-form" class="btn-create btn-primary margin-auto color-white margin-top-10px">Guardar</button>
                 </form>
             </div>
         </div>
     </section>
     
-    <script src="js/app.js"></script>
+    <script src="js/js.js"></script>
 </body>
 </html>

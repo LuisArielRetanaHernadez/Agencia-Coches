@@ -133,12 +133,17 @@ function gaddCarNew(){
 }
 
 function car(){
-    const buton = document.getElementsByClassName('btn-Update')
-    if(buton){
+    const butonUpdate = document.getElementsByClassName('btn-Update')
+    console.log(butonUpdate)
+    if(butonUpdate){
         updateDataCar()
-    }else{
+    }
+    const butonAdd = document.getElementsByClassName('btn-add')
+    console.log(butonAdd)
+    if(butonAdd){
         gaddCarNew()
     }
 }
+
 
 pinterData(cars)
